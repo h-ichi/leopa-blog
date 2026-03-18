@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/leopa-blog_favicon.png",
   },
+  verification: {
+    google: "6J2LUqCKP7Dp8C4dy6Z4MndM-Z3u5BfuSZQB7Q1lyR0",
+  },
 };
 
 export default function RootLayout({
@@ -31,3 +34,4 @@ export default function RootLayout({
     </html>
   );
 }
+
