@@ -1,7 +1,7 @@
 import { getPosts } from "@/lib/posts"
 
 export default function sitemap() {
-  const baseUrl = "https://leopa-blog.vercel.app/"
+  const baseUrl = "https://leopa-blog.vercel.app"
 
   const posts = getPosts()
 
