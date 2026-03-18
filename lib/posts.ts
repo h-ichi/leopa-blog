@@ -20,6 +20,8 @@ export interface Post {
 export function getPosts(): Post[] {
   const files = fs.readdirSync(postsDirectory)
 
+  console.log("FILES:", files)
+
   return files
     .map((file) => {
       const slug = file.replace(".html", "")
