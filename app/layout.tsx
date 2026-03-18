@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "わたしのレオパ BLOG",
@@ -31,19 +31,8 @@ export default function RootLayout({
 
         <Footer />
         {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-KP0W9TTBGX"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-KP0W9TTBGX');
-          `}
-        </Script>
-
+        <GoogleAnalytics gaId="G-KP0W9TTBGX" />
+        
       </body>
     </html>
   );
