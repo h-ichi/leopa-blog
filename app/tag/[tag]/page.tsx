@@ -1,35 +1,29 @@
 import { getPosts } from "@/lib/posts"
 import Link from "next/link"
 
-export default function BlogPage() {
+interface TagPageProps {
+  params: { tag: string }
+}
+
+export default function TagPage({ params }: TagPageProps) {
   const posts = getPosts()
 
-  // 記事に含まれる全タグを集めて重複を削除
-  const allTags = Array.from(new Set(posts.flatMap(post => post.tags)))
+  // URLタグをデコードして安全に比較
+  const tag = decodeURIComponent(params.tag).trim()
+
+  // タグに一致する記事をフィルター
+  const filtered = posts.filter(post =>
+    post.tags.map(t => t.trim()).includes(tag)
+  )
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-16">
       <h1 className="text-4xl font-bold mb-12 text-center text-orange-500">
-        記事一覧
+        #{tag} の記事一覧
       </h1>
 
-      {/* タグ一覧（動的） */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 text-orange-400">タグ一覧</h2>
-
-        <div className="flex gap-4 flex-wrap">
-          {allTags.map(tag => (
-            <Link key={tag} href={`/tag/${encodeURIComponent(tag)}`}>
-              <div className="border border-orange-200 text-orange-700 px-4 py-2 rounded hover:bg-orange-100 cursor-pointer">
-                {tag}
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       <div className="grid md:grid-cols-2 gap-8">
-        {posts.map((post) => (
+        {filtered.map((post) => (
           <div
             key={post.slug}
             className="group block bg-white border border-orange-100 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-1 transition"
@@ -48,13 +42,13 @@ export default function BlogPage() {
             {/* タグリンク（別Linkでネストなし） */}
             {post.tags.length > 0 && (
               <div className="mt-4 flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
+                {post.tags.map((t) => (
                   <Link
-                    key={tag}
-                    href={`/tag/${encodeURIComponent(tag)}`}
+                    key={t}
+                    href={`/tag/${encodeURIComponent(t)}`}
                     className="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded"
                   >
-                    #{tag}
+                    #{t}
                   </Link>
                 ))}
               </div>

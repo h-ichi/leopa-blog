@@ -8,6 +8,7 @@ interface FrontMatter {
   title?: string
   date?: string
   description?: string
+  tags?: string[]
 }
 
 export interface Post {
@@ -15,6 +16,7 @@ export interface Post {
   title: string
   date: string
   description: string
+  tags: string[]
 }
 
 export function getPosts(): Post[] {
@@ -37,6 +39,7 @@ export function getPosts(): Post[] {
         title: data.title || titleMatch?.[1] || slug,
         date: data.date || "",
         description: data.description || "",
+        tags: data.tags || [],
       }
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1))
