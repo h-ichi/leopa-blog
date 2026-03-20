@@ -1,9 +1,17 @@
 import Link from "next/link"
+import { getPosts, Post } from "@/lib/posts"
 
 export default function Footer() {
+  // 全記事を取得
+  const posts: Post[] = getPosts()
+
+  // 記事から全タグを抽出して重複を削除
+  const allTags: string[] = Array.from(
+    new Set(posts.flatMap(post => post.tags.map(t => t.trim())))
+  )
+
   return (
     <footer className="bg-orange-50 mt-20 border-t border-orange-200">
-
       <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
 
         {/* サイト情報 */}
@@ -17,21 +25,25 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* カテゴリ */}
+        {/* タグ一覧（縦並び） */}
         <div>
           <h3 className="font-bold mb-3 text-orange-400">
-            カテゴリ
+            タグ一覧
           </h3>
 
           <ul className="space-y-2 text-sm text-orange-700">
-            <li>
-              <Link href="/category/breeding" className="hover:underline hover:text-orange-400">
-                飼育方法
-              </Link>
-            </li>
+            {allTags.map((tag) => (
+              <li key={tag}>
+                <Link
+                  href={`/tag/${encodeURIComponent(tag)}`}
+                  className="hover:underline hover:text-orange-400"
+                >
+                  {tag}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
-
         {/* サイトリンク */}
         <div>
           <h3 className="font-bold mb-3 text-orange-400">
@@ -65,7 +77,6 @@ export default function Footer() {
       <div className="text-center text-sm text-orange-300 pb-6">
         © {new Date().getFullYear()} わたしのレオパ BLOG
       </div>
-
     </footer>
   )
 }
