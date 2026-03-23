@@ -72,6 +72,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ================= INSTAGRAM GRID ================= */}
+<section className="py-16 px-4">
+  <div className="max-w-4xl mx-auto text-center">
+
+    <h2 className="text-2xl font-bold mb-6">
+      レオパ飼育ログ（ときどき更新）
+    </h2>
+
+    <div className="grid grid-cols-4 gap-1 md:gap-2">
+
+      {[
+        { src: "/leopa1.jpg", url: "https://www.instagram.com/p/AAA/" },
+        { src: "/leopa2.jpg", url: "https://www.instagram.com/p/BBB/" },
+        { src: "/leopa3.jpg", url: "https://www.instagram.com/p/CCC/" },
+        { src: "/leopa4.jpg", url: "https://www.instagram.com/p/DDD/" },
+        { src: "/leopa5.jpg", url: "https://www.instagram.com/p/EEE/" },
+        { src: "/leopa6.jpg", url: "https://www.instagram.com/p/FFF/" },
+        { src: "/leopa7.jpg", url: "https://www.instagram.com/p/GGG/" },
+        { src: "/leopa8.jpg", url: "https://www.instagram.com/p/HHH/" },
+      ].map((item, index) => (
+        <a
+          key={index}
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <img
+            src={item.src}
+            alt="レオパードゲッコーの飼育記録"
+            className="w-full aspect-square object-cover rounded-md hover:opacity-80 transition"
+          />
+        </a>
+      ))}
+
+    </div>
+
+  </div>
+</section>
+
       {/* CTA */}
       <section className="bg-orange-100 p-6 rounded-lg text-center">
         <h2 className="text-xl font-bold mb-2 text-orange-400">

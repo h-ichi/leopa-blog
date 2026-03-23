@@ -1,6 +1,7 @@
 import { getPosts } from "@/lib/posts"
 import Link from "next/link"
 
+
 export default function BlogPage() {
   const posts = getPosts()
 
