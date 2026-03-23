@@ -27,23 +27,30 @@ export default function Footer() {
 
         {/* タグ一覧（縦並び） */}
         <div>
-          <h3 className="font-bold mb-3 text-orange-400">
-            タグ一覧
-          </h3>
+  <h3 className="font-bold mb-3 text-orange-400">
+    タグ一覧
+  </h3>
 
-          <ul className="space-y-2 text-sm text-orange-700">
-            {allTags.map((tag) => (
-              <li key={tag}>
-                <Link
-                  href={`/tag/${encodeURIComponent(tag)}`}
-                  className="hover:underline hover:text-orange-400"
-                >
-                  {tag}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+  <ul
+    className="text-sm text-orange-700"
+    style={{
+      columnWidth: "12  0px",
+      columnGap: "0.1rem",
+      height: "10rem", //
+    }}
+  >
+    {allTags.map((tag) => (
+      <li key={tag} className="mb-2 break-inside-avoid">
+        <Link
+          href={`/tag/${encodeURIComponent(tag)}`}
+          className="hover:underline hover:text-orange-400"
+        >
+          {tag}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
         {/* サイトリンク */}
         <div>
           <h3 className="font-bold mb-3 text-orange-400">
