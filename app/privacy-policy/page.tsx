@@ -1,6 +1,9 @@
+import Breadcrumb from "@/components/Breadcrumb"
+
 export default function PrivacyPolicy() {
   return (
     <div className="max-w-5xl mx-auto p-6 leading-relaxed">
+      <Breadcrumb />
 
       <h1 className="text-3xl font-bold mb-10 text-gray-800">
         プライバシーポリシー

@@ -1,6 +1,9 @@
+import Breadcrumb from "@/components/Breadcrumb"
+
 export default function ContactPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
+      <Breadcrumb />
 
       <h1 className="text-3xl font-bold mb-6">
         お問い合わせ

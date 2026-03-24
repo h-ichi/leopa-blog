@@ -1,5 +1,6 @@
 import { getPosts } from "@/lib/posts"
 import Link from "next/link"
+import Breadcrumb from "@/components/Breadcrumb"
 
 
 export default function BlogPage() {
@@ -10,6 +11,7 @@ export default function BlogPage() {
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-16">
+      <Breadcrumb />
       <h1 className="text-4xl font-bold mb-12 text-center text-orange-500">
         記事一覧
       </h1>

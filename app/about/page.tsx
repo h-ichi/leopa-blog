@@ -1,8 +1,10 @@
 import Image from "next/image"
+import Breadcrumb from "@/components/Breadcrumb"
 
 export default function AboutPage() {
   return (
     <div className="max-w-5xl mx-auto p-6 leading-relaxed">
+      <Breadcrumb />
 
       <h1 className="text-3xl font-bold mb-8 text-gray-800">
         運営者情報

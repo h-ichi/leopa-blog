@@ -1,4 +1,5 @@
 import { getPosts, getPostBySlug } from "@/lib/posts"
+import Breadcrumb from "@/components/Breadcrumb"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -24,14 +25,12 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: post.title,
     description: post.description,
-
     openGraph: {
       title: post.title,
       description: post.description,
       type: "article",
       url: `https://leopa-app.onrender.com/blog/${slug}`,
     },
-
     twitter: {
       card: "summary_large_image",
       title: post.title,
@@ -43,12 +42,21 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: Props) {
   const { slug } = await params
 
-  const { content } = getPostBySlug(slug)
+  // ← ここ重要
+  const post = getPostBySlug(slug)
 
   return (
-    <article
-      className="max-w-3xl mx-auto px-4 py-10 leading-relaxed text-gray-800"
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
+    <main className="max-w-3xl mx-auto px-4 py-10">
+
+      {/* パンくず */}
+      <Breadcrumb currentTitle={post.title} />
+
+      {/* 記事 */}
+      <article
+        className="leading-relaxed text-gray-800"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
+
+    </main>
   )
 }
