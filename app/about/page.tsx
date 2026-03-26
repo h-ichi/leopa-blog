@@ -11,7 +11,7 @@ export default function AboutPage() {
       </h1>
 
       <p className="text-lg font-medium text-gray-800">
-        わたしのレオパBLOG
+        わたしのげっこーBLOG
       </p>
 
       <p className="mt-6 text-gray-600">

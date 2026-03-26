@@ -17,7 +17,7 @@ export default function Footer() {
         {/* サイト情報 */}
         <div>
           <h3 className="font-bold text-lg mb-3 text-orange-400">
-            わたしのレオパ BLOG
+            わたしのげっこー BLOG
           </h3>
 
           <p className="text-sm text-orange-700">
