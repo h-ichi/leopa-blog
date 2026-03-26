@@ -7,7 +7,7 @@ export default function Header() {
 
         {/* Logo */}
         <Link href="/" className="text-orange-400 font-bold text-lg">
-          わたしのレオパ BLOG
+          わたしのげっこー BLOG
         </Link>
 
         {/* Navigation */}
