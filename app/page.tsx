@@ -83,14 +83,8 @@ export default function Home() {
     <div className="grid grid-cols-4 gap-1 md:gap-2">
 
       {[
-        { src: "/leopa1.jpg", url: "https://www.instagram.com/p/AAA/" },
-        { src: "/leopa2.jpg", url: "https://www.instagram.com/p/BBB/" },
-        { src: "/leopa3.jpg", url: "https://www.instagram.com/p/CCC/" },
-        { src: "/leopa4.jpg", url: "https://www.instagram.com/p/DDD/" },
-        { src: "/leopa5.jpg", url: "https://www.instagram.com/p/EEE/" },
-        { src: "/leopa6.jpg", url: "https://www.instagram.com/p/FFF/" },
-        { src: "/leopa7.jpg", url: "https://www.instagram.com/p/GGG/" },
-        { src: "/leopa8.jpg", url: "https://www.instagram.com/p/HHH/" },
+        { src: "/instagram/leopa1.jpg", url: "https://www.instagram.com/p/DWVtJWFEi1G/" },
+        
       ].map((item, index) => (
         <a
           key={index}
