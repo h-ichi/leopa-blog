@@ -84,6 +84,7 @@ export default function Home() {
 
       {[
         { src: "/instagram/leopa1.jpg", url: "https://www.instagram.com/p/DWVtJWFEi1G/" },
+        { src: "/instagram/leopa2.jpg", url: "https://www.instagram.com/p/DWYSj0vks4U/" },
         
       ].map((item, index) => (
         <a
