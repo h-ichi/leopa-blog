@@ -8,10 +8,11 @@ const playfair = Playfair_Display({
 })
 
 export default function Home() {
+  const allPosts = getPosts()
   const posts = getPosts().slice(0, 4) // 最新4件
 
   // 記事に含まれる全タグを集めて重複を削除
-  const allTags = Array.from(new Set(posts.flatMap(post => post.tags)))
+  const allTags = Array.from(new Set(allPosts.flatMap(post => post.tags)))
 
   return (
     <main className="max-w-5xl mx-auto p-6">
