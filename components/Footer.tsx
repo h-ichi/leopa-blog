@@ -82,7 +82,7 @@ export default function Footer() {
 
       {/* コピーライト */}
       <div className="text-center text-sm text-orange-300 pb-6">
-        © {new Date().getFullYear()} わたしのレオパ BLOG
+        © {new Date().getFullYear()} まいげっこ BLOG
       </div>
     </footer>
   )
