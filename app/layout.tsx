@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
-  title: "まいゲッコ BLOG | レオパ飼育、日常ブログ",
+  title: "まいげっこ BLOG | レオパ飼育、日常ブログ",
   description: "レオパードゲッコーの飼育記録・日常を紹介するブログ",
   icons: {
     icon: "/leopa-blog_favicon.png",
