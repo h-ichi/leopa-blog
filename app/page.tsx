@@ -26,7 +26,7 @@ export default function Home() {
           <h1
             className={`${playfair.className} text-4xl md:text-5xl font-bold mb-4 text-white tracking-wide`}
           >
-            わたしのげっこー BLOG
+            まいげっこ BLOG
           </h1>
 
           <p className="text-white">
