@@ -24,3 +24,75 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+article {
+  @apply max-w-3xl mx-auto px-4 py-10 leading-relaxed text-gray-800;
+}
+
+article h1 {
+  @apply text-3xl font-bold mb-6;
+}
+
+article h2 {
+  @apply text-2xl font-bold mb-6 mt-10;
+}
+
+article h3 {
+  @apply text-lg font-semibold mb-2;
+}
+
+article p {
+  @apply mb-6;
+}
+
+article ul {
+  @apply list-disc pl-6 mb-6;
+}
+
+article ol {
+  @apply list-decimal pl-6 mb-6;
+}
+
+article hr {
+  @apply my-10;
+}
+
+article strong {
+  @apply font-semibold;
+}
+
+article img {
+  @apply rounded-lg mb-10;
+}
+
+.reference-box {
+  @apply bg-gray-50 p-4 rounded-lg mb-10 border border-gray-200;
+}
+
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+article th,
+article td {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+article th {
+  background: #fed7aa;
+  font-weight: 600;
+}
+
+article img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 1.5rem 0 3rem;
+}
+
+article h3 {
+  margin-top: 2rem;
+}
