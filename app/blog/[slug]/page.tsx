@@ -1,5 +1,6 @@
 import { getPosts, getPostBySlug } from "@/lib/posts"
 import Breadcrumb from "@/components/Breadcrumb"
+import RelatedPosts from "@/components/RelatedPosts"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: Props) {
   const { slug } = await params
 
-  // ← ここ重要
+  
   const post = getPostBySlug(slug)
 
   return (
@@ -56,6 +57,11 @@ export default async function Page({ params }: Props) {
         className="leading-relaxed text-gray-800"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
+
+<RelatedPosts
+  currentSlug={post.slug}
+  tags={post.tags}
+/>
 
     </main>
   )

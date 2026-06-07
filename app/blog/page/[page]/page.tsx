@@ -40,9 +40,9 @@ export default async function BlogPage({
                 {post.title}
               </h2>
 
-              <div className="mt-6 text-sm text-orange-400 group-hover:text-orange-600 transition">
-                Read article →
-              </div>
+              <p className="text-orange-300 mt-2 text-xs">
+                {new Date(post.date).toLocaleDateString("ja-JP")}
+              </p>
             </Link>
 
             {post.tags.length > 0 && (
