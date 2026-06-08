@@ -32,15 +32,13 @@ export default function Footer() {
   </h3>
 
   <ul
-    className="text-sm text-orange-700"
+    className="grid grid-flow-col gap-x-6 text-sm text-orange-700"
     style={{
-      columnWidth: "12  0px",
-      columnGap: "0.1rem",
-      height: "10rem", //
+      gridTemplateRows: "repeat(7, auto)",
     }}
   >
     {allTags.map((tag) => (
-      <li key={tag} className="mb-2 break-inside-avoid">
+      <li key={tag}>
         <Link
           href={`/tag/${encodeURIComponent(tag)}`}
           className="hover:underline hover:text-orange-400"
