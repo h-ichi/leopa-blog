@@ -34,7 +34,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-
+      
       {/* 新着記事 */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-6 text-orange-400">最新記事</h2>
@@ -57,6 +57,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      
 
       {/* タグ一覧（動的） */}
       <section className="mb-12">
