@@ -2,6 +2,7 @@ import Link from "next/link"
 import { getPosts } from "@/lib/posts"
 import { Playfair_Display } from "next/font/google"
 
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["600", "700"]
@@ -36,10 +37,10 @@ export default function Home() {
       </section>
       
       {/* 新着記事 */}
-      <section className="mb-12">
+      <section className="mb-12 text-center">
         <h2 className="text-2xl font-bold mb-6 text-orange-400">最新記事</h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 text-left">
           {posts.map((post) => (
             <Link
               key={post.slug}
@@ -54,14 +55,27 @@ export default function Home() {
                 {new Date(post.date).toLocaleDateString("ja-JP")}
               </p>
             </Link>
+            
           ))}
         </div>
+        
       </section>
 
-      
+      {/* 記事一覧 */}
+<section className="mb-12 text-center">
+ 
+
+  <Link
+    href="/blog"
+    className="text-orange-500 font-semibold hover:text-orange-600 transition"
+  >
+    Read More →
+  </Link>
+</section>
+    
 
       {/* タグ一覧（動的） */}
-      <section className="mb-12">
+      <section className="mb-12 text-center">
         <h2 className="text-2xl font-bold mb-4 text-orange-400">タグ一覧</h2>
 
         <div className="flex gap-4 flex-wrap">
