@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://leopa-blog.vercel.app";
+  const baseUrl = "https://mygekkoblog.com";
 
   return {
     rules: {

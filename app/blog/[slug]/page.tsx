@@ -25,12 +25,14 @@ export async function generateMetadata({ params }: Props) {
 
   return {
     title: post.title,
-    description: post.description,
+    alternates: {
+      canonical: `https://mygekkoblog.com/blog/${slug}`,
+},
     openGraph: {
       title: post.title,
       description: post.description,
       type: "article",
-      url: `https://leopa-app.onrender.com/blog/${slug}`,
+      url: `https://mygekkoblog.com/blog/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
