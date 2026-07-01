@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     icon: "/leopa-blog_favicon.png",
   },
   verification: {
-    google: "6J2LUqCKP7Dp8C4dy6Z4MndM-Z3u5BfuSZQB7Q1lyR0",
+    google: "wfCKaucT7cywHY6sWpOVL6u209yJOO7R6RG3wvyK0jo",
   },
 };
 
