@@ -17,7 +17,10 @@ const nameMap: Record<string, string> = {
 
 export default function Breadcrumb({ currentTitle }: Props) {
   const pathname = usePathname()
-  const segments = pathname.split("/").filter(Boolean)
+  const segments = pathname
+  .split("/")
+  .filter(Boolean)
+  .filter((segment) => segment !== "tag")
 
   const breadcrumbItems = [
     { name: "ホーム", href: "/" },
