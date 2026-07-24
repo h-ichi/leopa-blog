@@ -1,9 +1,40 @@
 import { getPosts } from "@/lib/posts"
 import Link from "next/link"
 import Breadcrumb from "@/components/Breadcrumb"
+import { tagDescriptions } from "@/lib/tagDescriptions"
+import type { Metadata } from "next"
+
 
 interface TagPageProps {
   params: { tag: string }
+}
+
+export async function generateMetadata(
+  { params }: TagPageProps
+): Promise<Metadata> {
+
+  const tag = decodeURIComponent(params.tag).trim()
+
+  const description =
+    tagDescriptions[tag] ??
+    `レオパードゲッコーの「${tag}」に関する記事をまとめています。`
+
+  return {
+    title: `レオパードゲッコーの「${tag}」関連記事まとめ｜まいげっこBLOG`,
+    description,
+
+    openGraph: {
+      title: `レオパードゲッコーの「${tag}」関連記事まとめ`,
+      description,
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `レオパードゲッコーの「${tag}」関連記事まとめ`,
+      description,
+    },
+  }
 }
 
 export default function TagPage({ params }: TagPageProps) {
@@ -23,6 +54,13 @@ export default function TagPage({ params }: TagPageProps) {
       <h1 className="text-4xl font-bold mb-12 text-center text-orange-500">
         #{tag} の記事一覧
       </h1>
+      <p className="max-w-3xl mx-auto mt-6 mb-12 text-center text-gray-600 leading-8">
+  {tagDescriptions[tag] ?? `${tag}に関する記事一覧です。`}
+</p>
+<p className="text-center text-sm text-gray-500 mb-10">
+  全{filtered.length}件の記事
+</p>
+     
 
       <div className="grid md:grid-cols-2 gap-8">
         {filtered.map((post) => (
@@ -35,6 +73,9 @@ export default function TagPage({ params }: TagPageProps) {
               <h2 className="text-2xl font-semibold text-gray-800 group-hover:text-orange-500 transition">
                 {post.title}
               </h2>
+              <p className="mt-4 text-gray-600 line-clamp-3">
+  {post.description}
+</p>
 
               <div className="mt-6 text-sm text-orange-400 group-hover:text-orange-600 transition">
                 Read article →
