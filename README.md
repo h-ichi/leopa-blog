@@ -1,14 +1,15 @@
-# 🦎 Leopard Gecko Blog
+# 🦎 まいげっこ BLOG
 
-レオパードゲッコーの飼育情報・モルフ・餌・飼育環境などを紹介するブログです。
-SEOを意識した構造で作成し、将来的にはレオパ飼育管理アプリへの導線としても活用します。
+レオパードゲッコー（ヒョウモントカゲモドキ）の飼育情報・モルフ・餌・飼育環境などを発信するブログサイトです。
+
+SEOを意識したブログ構造で開発し、将来的にはレオパ飼育管理アプリ「Leopa LOG」への導線・集客サイトとして活用することを目的としています。
 
 ---
 
 # 🌐 URL
 
 ```
-https://your-domain.com
+https://mygekkoblog.com/
 ```
 
 ---
@@ -17,7 +18,7 @@ https://your-domain.com
 
 ## Frontend
 
-* Next.js (App Router)
+* Next.js 14
 * React
 * TypeScript
 
@@ -27,16 +28,27 @@ https://your-domain.com
 
 ## Content Management
 
-* Markdown
+* HTMLベースの記事管理
 * gray-matter
 * remark
 
 ## SEO
 
 * Next.js Metadata API
-* sitemap
+* sitemap.ts
 * robots.txt
 * Open Graph
+* 動的Metadata生成
+
+## Authentication
+
+* Middleware
+* 管理画面ログイン認証
+
+## Development Environment
+
+* Docker
+* Docker Compose
 
 ## Deployment
 
@@ -48,108 +60,194 @@ https://your-domain.com
 
 ```
 leopa-blog
-│
-├─ app
-│   ├─ layout.tsx
-│   ├─ page.tsx
+
+├── app
+│   ├── (site)
+│   │   ├── about
+│   │   ├── blog
+│   │   │   ├── [slug]
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── contact
+│   │   ├── privacy-policy
+│   │   └── tag
+│   │       └── [tag]
 │   │
-│   ├─ blog
-│   │   ├─ page.tsx
-│   │   └─ [slug]
-│   │       └─ page.tsx
+│   ├── admin
+│   │   ├── page.tsx
+│   │   ├── posts
+│   │   │   ├── page.tsx
+│   │   │   └── [slug]
+│   │   │       └── page.tsx
+│   │   └── tags
 │   │
-│   ├─ category
-│   │   └─ [category]
-│   │       └─ page.tsx
+│   ├── api
+│   │   └── auth
 │   │
-│   ├─ tag
-│   │   └─ [tag]
-│   │       └─ page.tsx
+│   ├── login
+│   ├── sitemap.ts
+│   ├── robots.txt
+│   └── globals.css
+│
+├── components
+│   ├── admin
+│   │   ├── DashboardCard.tsx
+│   │   ├── Header.tsx
+│   │   ├── PostTable.tsx
+│   │   ├── SearchBox.tsx
+│   │   └── Sidebar.tsx
 │   │
-│   ├─ sitemap.ts
-│   └─ robots.ts
+│   ├── auth
+│   │   └── LoginForm.tsx
+│   │
+│   ├── blog
+│   │   └── BlogLayout.tsx
+│   │
+│   ├── Breadcrumb.tsx
+│   ├── Footer.tsx
+│   ├── Header.tsx
+│   └── RelatedPosts.tsx
 │
-├─ components
-│   ├─ Header.tsx
-│   ├─ Footer.tsx
-│   ├─ PostCard.tsx
-│   ├─ TableOfContents.tsx
-│   └─ AdSense.tsx
+├── content
+│   └── *.html
+│       └── ブログ記事データ
 │
-├─ content
-│   └─ posts
-│       └─ example-post.md
+├── lib
+│   ├── analysis
+│   │   ├── counters.ts
+│   │   ├── recommendations.ts
+│   │   ├── score.ts
+│   │   ├── types.ts
+│   │   └── index.ts
+│   │
+│   ├── auth.ts
+│   ├── posts.ts
+│   └── tagDescriptions.ts
 │
-├─ lib
-│   └─ posts.ts
+├── public
+│   ├── images
+│   └── instagram
 │
-├─ public
-│   └─ images
-│
-└─ styles
-    └─ globals.css
+├── middleware.ts
+├── docker-compose.yml
+├── Dockerfile
+├── next.config.mjs
+├── package.json
+└── README.md
 ```
 
 ---
 
-# ✍️ 記事の作成
+# ✍️ 記事管理
 
-記事は `content/posts` に Markdown で作成します。
+記事は `content` 配下のHTMLファイルで管理しています。
 
-## 記事例
-
-```
-content/posts/leopard-gecko-food.md
-```
+例：
 
 ```
----
-title: レオパードゲッコーの餌まとめ
-date: 2026-03-07
-category: food
-tags: ["餌", "コオロギ"]
-description: レオパードゲッコーの餌について解説
----
-
-## レオパの餌
-
-レオパードゲッコーは主に昆虫を食べます。
-
-- コオロギ
-- デュビア
-- ミルワーム
+content/leopard-gecko-bite.html
 ```
+
+記事情報として以下を管理しています。
+
+* タイトル
+* Description
+* 本文
+* タグ
+* 画像情報
 
 ---
 
-# 🔎 SEO対策
+# 🔎 SEO分析機能
 
-このブログでは以下のSEO対策を行っています。
+管理画面では記事ごとのSEO分析を自動で行います。
 
-* 静的生成（SSG）
-* メタデータ管理
-* sitemap生成
-* robots.txt
-* Open Graph
+## 分析項目
+
+* タイトル文字数
+* Description文字数
+* 本文文字数
+* H1数
+* H2数
+* 画像数
+* alt属性不足
+* 内部リンク数
+
+## SEOスコア
+
+記事内容を解析し、SEOスコアを算出します。
+
+例：
+
+```
+SEO Score
+
+92点
+```
+
+## 改善レコメンド
+
+分析結果から改善ポイントを自動生成します。
+
+例：
+
+```
+Descriptionが短めです。
+80〜140文字がおすすめです。
+
+関連記事への内部リンクを追加しましょう。
+```
 
 ---
 
-# 💰 収益化
+# 📊 管理画面機能
+
+管理画面では以下の機能を提供しています。
+
+* 記事一覧表示
+* 記事詳細確認
+* SEO分析
+* SEOスコア表示
+* 改善ポイント表示
+* タグ管理
+
+---
+
+# 🔗 関連プロジェクト
+
+## Leopa LOG
+
+レオパードゲッコー専用の飼育管理アプリ。
+
+予定機能：
+
+* 飼育記録
+* 給餌管理
+* 排便記録
+* 写真管理
+* 飼育データ分析
+
+ブログからアプリへの導線を作り、飼育情報と管理ツールを連携させる予定です。
+
+---
+
+# 💰 収益化予定
 
 ## Google AdSense
 
-記事内広告によるクリック収益
+ブログ記事内広告による収益化。
 
 ## アフィリエイト
 
-主な商品
+対象商品：
 
 * レオパ飼育ケージ
 * パネルヒーター
-* UVBライト
-* 餌（コオロギ / デュビア）
+* 温湿度計
+* 飼育用品
+* 餌（コオロギ・デュビア）
 
-主なASP
+予定ASP：
 
 * Amazonアソシエイト
 * 楽天アフィリエイト
@@ -158,34 +256,24 @@ description: レオパードゲッコーの餌について解説
 
 # 📈 記事カテゴリ
 
-* 飼育方法
+* レオパ飼育方法
 * 餌
 * モルフ
-* 病気
-* 初心者ガイド
+* 初心者向け情報
+* 飼育記録
+* レオパあるある
+* 飼育環境
 
 ---
 
-# 🔗 将来予定
+# 🔮 今後の予定
 
-* レオパードゲッコー **モルフ図鑑**
-* レオパ飼育 **管理アプリ**
-* 飼育カレンダー
-* 爬虫類ショップ紹介
-
----
-
-# ⚡ セットアップ
-
-```
-git clone https://github.com/yourname/leopa-blog
-cd leopa-blog
-npm install
-npm run dev
-```
+* SEO分析機能強化
+* Google Search Console API連携
+* 検索順位管理
+* AIによる記事改善提案
+* 飼育データ分析機能
 
 ---
 
-# 🧑‍💻 Author
 
-Leopard Gecko enthusiast & developer
